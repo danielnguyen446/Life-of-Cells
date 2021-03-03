@@ -2,7 +2,7 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: 
+ * Sources used: none
  * 
  * This file contains the CellMoveUp subclass of cell. This
  * concrete subclass is denoted by "^" on the petri dish.
@@ -62,5 +62,4 @@ public class CellMoveUp extends Cell
             return false;
         }
     }
-    
 }
