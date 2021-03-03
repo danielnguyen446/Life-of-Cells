@@ -9,20 +9,22 @@
  * contain either a living cell or an empty space.
  */
 
-import java.util.*;
-
 /**
  * This class contains methods to initialize and create the structure of the 
  * petri dish.
  */
 public class PetriDish
 {
+    /** Instance variables*/
+    public Cell[][] dish;   //represents the current iteration
+    
     /**
      * This constructor initializes the board.
      */
     public PetriDish(String[][] board);
     {
         //format is "{CELL_TYPE} {MASS}" 
+        
     }
-   
+  
 }
