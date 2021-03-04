@@ -2,7 +2,7 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: none 
+ * Sources used: tutor help(Stephen M Boussarov)
  * 
  * This file contains the CellDivide subclass of cell. This
  * concrete subclass is denoted by "+" on the petri dish.
@@ -26,6 +26,7 @@ public class CellDivide extends Cell
      */
     public CellDivide(int currRow, int currCol, int mass)
     {
+        super(currRow, currCol, mass);
         direction = 1;  //direction should be defaulted to 1
     }
     
@@ -35,7 +36,8 @@ public class CellDivide extends Cell
      */
     public CellDivide(CellDivide otherCellDivide)
     {
-        
+        super(otherCellDivide);
+        direction = otherCellDivide.direction;
     }
     
     /**
@@ -53,11 +55,9 @@ public class CellDivide extends Cell
      * determining the number of neighbors the cell has.
      * 
      */
-    public abstract boolean checkApoptosis(List<Cell> neighbors);
+    public boolean checkApoptosis(List<Cell> neighbors)
     {
-        int neighbors = 0;
-        
-        if(neighbors=3)
+        if(neighbors.size()==3)
         {
             return true;
         }
@@ -66,6 +66,4 @@ public class CellDivide extends Cell
             return false;
         }
     }
-    
-    
 }
