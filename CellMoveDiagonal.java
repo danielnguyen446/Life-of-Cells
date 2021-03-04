@@ -2,7 +2,7 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: none 
+ * Sources used: tutor help(Stephen M Boussarov)
  * 
  * This file contains the CellMoveDiagonal subclass of CellMoveUp. This
  * concrete subclass is denoted by "/"  or "\" on the petri dish. 
@@ -27,6 +27,7 @@ public class CellMoveDiagonal extends CellMoveUp
      */
     public CellMoveDiagonal(int currRow, int currCol, int mass)
     {
+        super(currRow, currCol, mass);
         orientedRight = true;   //orientedRight should be defaulted to true
         diagonalMoves = 0;  //diagonalMoves should be defaulted to 0
     }
@@ -37,7 +38,9 @@ public class CellMoveDiagonal extends CellMoveUp
      */
     public CellMoveDiagonal(CellMoveDiagonal otherCellMoveDiagonal)
     {
-        
+        super(otherCellMoveDiagonal);
+        orientedRight = otherCellMoveDiagonal.orientedRight;
+        diagonalMoves = otherCellMoveDiagonal.diagonalMoves;
     }
     
     /**
@@ -47,7 +50,7 @@ public class CellMoveDiagonal extends CellMoveUp
      */
     public String toString()
     {
-        if (toggled = true)
+        if (orientedRight == true)
         {
             return "/";
         }
@@ -61,11 +64,9 @@ public class CellMoveDiagonal extends CellMoveUp
      * This method checks if the cell should initiate apoptosis or not by 
      * determining the number of neighbors the cell has.
      */
-    public abstract boolean checkApoptosis(List<Cell> neighbors);
+    public boolean checkApoptosis(List<Cell> neighbors)
     {
-        int neighbors = 0;        
-        
-        if(neighbors>3)
+        if(neighbors.size()>3)
         {
             return true;
         }
