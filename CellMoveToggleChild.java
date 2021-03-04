@@ -2,12 +2,13 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: none 
+ * Sources used: tutor help(Stephen M Boussarov)
  * 
  * This file contains the CellMoveToggleChild subclass of CellMoveToggle.
  */
 
 import java.util.*;
+
 
 /**
  * This class derives from CellMoveToggle. It has two constructors 
@@ -24,7 +25,8 @@ public class CellMoveToggleChild extends CellMoveToggle
      */
     public CellMoveToggleChild(int currRow, int currCol, int mass)
     {
-
+        super(currRow, currCol, mass);
+        numAlive+=1;
     }
     
     /**
@@ -33,7 +35,8 @@ public class CellMoveToggleChild extends CellMoveToggle
      */
     public CellMoveToggleChild(CellMoveToggleChild otherCCellMoveToggleChild)
     {
-        
+        super(otherCCellMoveToggleChild);
+        numAlive = otherCCellMoveToggleChild.numAlive;
     }
     
   
@@ -42,28 +45,42 @@ public class CellMoveToggleChild extends CellMoveToggle
      */
     public String toString()
     {
-        //does not override CellMoveToggle's toString method
+        //does not override CellMoveToggle's toString
+        if (toggled = true)
+        {
+            return "T";
+        }
+        else
+        {
+            return "t";
+        }
+    }
+    
+    public void apoptosis()
+    {
+        super.apoptosis();
+        numAlive = numAlive-1;
     }
     
     /**
      * This method checks if the cell should initiate apoptosis or not by 
      * determining the number of neighbors the cell has.
      */
-    public abstract boolean checkApoptosis(List<Cell> neighbors);
+    public boolean checkApoptosis(List<Cell> neighbors)
     {
-        int neighbors = 0;        
-        
         /** 
          * Override apoptosis() to not only call its parent's apoptosis() 
          * method but to also decrement numAlive by 1.
          */
-        if((neighbors<2 || neighbors>5)) //&& CellMoveToggleChilds alive<10)
+        if((neighbors.size()<2 || neighbors.size()>5) && numAlive<10)
         {
             return true;
+            
         }
         else
         {
             return false;
         }
     }
+    
 }
