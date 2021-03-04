@@ -2,7 +2,7 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: none 
+ * Sources used: tutor help(Stephen M Boussarov) 
  * 
  * This file contains the CellMoveToggle subclass of CellMoveUp. This
  * concrete subclass is denoted by "T" or "t" on the petri dish.
@@ -26,6 +26,7 @@ public class CellMoveToggle extends CellMoveUp
      */
     public CellMoveToggle(int currRow, int currCol, int mass)
     {
+        super(currRow, currCol, mass);
         toggled = true;  //toggled should be defaulted to true
     }
     
@@ -35,7 +36,8 @@ public class CellMoveToggle extends CellMoveUp
      */
     public CellMoveToggle(CellMoveToggle otherCellMoveToggle)
     {
-        
+        super(otherCellMoveToggle);
+        toggled = otherCellMoveToggle.toggled;
     }
     
     /**
@@ -59,11 +61,9 @@ public class CellMoveToggle extends CellMoveUp
      * This method checks if the cell should initiate apoptosis or not by 
      * determining the number of neighbors the cell has.
      */
-    public abstract boolean checkApoptosis(List<Cell> neighbors);
+    public boolean checkApoptosis(List<Cell> neighbors)
     {
-        int neighbors = 0;
-        
-        if(neighbors<2 || neighbors>5)
+        if(neighbors.size()<2 || neighbors.size()>5)
         {
             return true;
         }
