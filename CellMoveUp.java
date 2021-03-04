@@ -2,7 +2,7 @@
  * Name: Daniel Nguyen
  * ID: A16129027
  * Email: d7nguyen@ucsd.edu
- * Sources used: none
+ * Sources used: tutor help(Stephen M Boussarov)
  * 
  * This file contains the CellMoveUp subclass of cell. This
  * concrete subclass is denoted by "^" on the petri dish.
@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * This class derives from cell. It has two constructors and overrides the 
- * toString and checkApoptosis methods. 
+ * toString and checkApoptosis methods.
  */
 public class CellMoveUp extends Cell
 {
@@ -23,7 +23,7 @@ public class CellMoveUp extends Cell
      */
     public CellMoveUp(int currRow, int currCol, int mass)
     {
-        
+        super(currRow, currCol, mass);
     }
     
     /**
@@ -32,7 +32,7 @@ public class CellMoveUp extends Cell
      */
     public CellMoveUp(CellMoveUp otherCellMoveUp)
     {
-        
+        super(otherCellMoveUp);
     }
     
     /**
@@ -49,11 +49,9 @@ public class CellMoveUp extends Cell
      * This method checks if the cell should initiate apoptosis or not by 
      * determining the number of neighbors the cell has.
      */
-    public abstract boolean checkApoptosis(List<Cell> neighbors);
+    public boolean checkApoptosis(List<Cell> neighbors)
     {
-        int neighbors = 0;
-        
-        if(neighbors!=4)
+        if(neighbors.size()!=4)
         {
             return true;
         }
