@@ -26,9 +26,9 @@ public class PetriDish
     public PetriDish(String[][] board)
     {
         //iterate through the 2d array of strings by row and column
-        for(int row=0; row<=board.length; row++)
+        for(int row=0; row<board.length; row++)
         {
-            for(int column=0; column<=board[row].length; column++)
+            for(int column=0; column<board[row].length; column++)
             {
                 //create a temporary string array called petri
                 String[] petri = board[row][column].trim().split(" ");
